@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "wabisabi",
+  "version": "1.0",
+  "permissions": [
+    "contextMenus",
+    "sidePanel",
+    "tabs",
+    "offscreen",
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["dict/base.dat.gz"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://music.youtube.com/watch?v=*"],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

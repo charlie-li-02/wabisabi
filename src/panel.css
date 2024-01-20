@@ -1,0 +1,93 @@
+.wrapper {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.backdrop {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    filter: blur(20px) brightness(75%);
+    z-index: -1;
+    transform: scale(1.1);
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    z-index: 10;
+}
+
+.refresh-lyrics-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    z-index: 99;
+}
+
+.wabisabi-face {
+    line-height: 200px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.error-message {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lyrics {
+    height: 100vh;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    white-space: pre-line;
+    line-height: 2;
+    font-weight: bold;
+    overflow: auto;
+}
+
+.info-bar {
+    background-color: #2b2b2b;
+    height: 65px;
+    width: 100vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 0;
+    right: 0;
+    position: fixed;
+}
+
+.thumbnail {
+    height: 40px;
+    width: 40px;
+    background-size: cover;
+    background-position: center;
+}
+
+.song-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+}
+
+.song-info {
+    font-size: 14px;
+    font-weight: bold;
+    color: #909090;
+    text-overflow: ellipsis;
+}
