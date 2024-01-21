@@ -55,7 +55,7 @@ async function fetchData() {
 }
 
 function encodeLyrics(lyrics) {
-    return lyrics.replaceAll("\n", "*");
+    return lyrics?.replaceAll("\n", "*");
 }
 
 function scrapeData() {
@@ -65,7 +65,7 @@ function scrapeData() {
     data.title = currentTrack[0];
     data.info = currentTrack[currentTrack.length-1];
     const lyricsContainer = document.getElementsByClassName("non-expandable description style-scope ytmusic-description-shelf-renderer");
-    data.lyrics = encodeLyrics(lyricsContainer[lyricsContainer.length - 1].textContent).lyrics = encodeLyrics(lyricsContainer[lyricsContainer.length - 1].textContent);
+    data.lyrics = encodeLyrics(lyricsContainer[lyricsContainer.length - 1]?.textContent);
     const albumCoverContainer = document.getElementById("song-image");
     data.image = albumCoverContainer.getElementsByTagName('img')[0].src;
     data.complete = true;
