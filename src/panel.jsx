@@ -61,11 +61,11 @@ function Panel() {
     });
 
     const RefreshLyricsButton = styled(IconButton)({
-        // bottom: 15,
-        // right: 5,
+        bottom: 15,
+        right: 5,
         width: "30px",
         height: "30px",
-        //position: "fixed",
+        position: "fixed",
         backgroundColor: "transparent",
         borderRadius: 5,
         zIndex: 99
@@ -93,7 +93,7 @@ function Panel() {
     const Lyrics = styled(Typography)({
         height: "100vh",
         paddingTop: "1em",
-        paddingBottom: "1em",
+        paddingBottom: "5em",
         paddingLeft: "1em",
         paddingRight: "1em",
         whiteSpace: "pre-line",
