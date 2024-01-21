@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
-import {Box, IconButton, ThemeProvider, Typography, Stack} from "@mui/material";
-import {styled} from "@mui/system";
-import RefreshIcon from "@mui/icons-material/Refresh";
+import {Box, ThemeProvider, Stack} from "@mui/material";
+import {Wrapper, Backdrop, Overlay, WabisabiFace, ErrorMessage, CenteredDiv, Lyrics, InfoBar, Thumbnail, SongTitle, SongInfo} from "./components.jsx";
 import CssBaseline from "@mui/material/CssBaseline";
-import {darkTheme} from "./theme.jsx";
+import * as Theme from "./theme.jsx";
 import Kuroshiro from "kuroshiro";
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -35,92 +34,6 @@ function Panel() {
     const [loading, setLoading] = useState(false);
     const [isFaceVisible, setIsFaceVisible] = useState(false);
     const [isInfoBarVisible, setIsInfoBarVisible] = useState(false);
-
-    const Wrapper = styled(Box)({
-        position: "relative",
-        height: "100vh",
-        overflow: "hidden"
-    });
-
-    const Backdrop = styled("div")({
-        top: 0,
-        left: 0,
-        height: "100%",
-        width: "100%",
-        position: "absolute",
-        filter: "blur(20px) brightness(75%)",
-        zIndex: -1,
-        transform: "scale(1.1)",
-        backgroundImage: `url(${thumbnail})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-    });
-
-    const Overlay = styled("div")({
-        zIndex: 10,
-    });
-
-    const RefreshLyricsButton = styled(IconButton)({
-        bottom: 15,
-        right: 5,
-        width: "30px",
-        height: "30px",
-        position: "fixed",
-        backgroundColor: "transparent",
-        borderRadius: 5,
-        zIndex: 99
-    });
-
-    const WabisabiFace = styled(Typography)({
-        lineHeight: "200px",
-        textAlign: "center",
-        fontWeight: "bold",
-        whiteSpace: "nowrap"
-    });
-
-    const ErrorMessage = styled(Typography)({
-        flexGrow: 1,
-        textAlign: "center"
-    });
-
-    const CenteredDiv = styled("div")({
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)"
-    });
-
-    const Lyrics = styled(Typography)({
-        height: "100vh",
-        paddingTop: "1em",
-        paddingBottom: "5em",
-        paddingLeft: "1em",
-        paddingRight: "1em",
-        whiteSpace: "pre-line",
-        lineHeight: "2",
-        fontWeight: "bold",
-        overflow: "auto",
-    });
-
-    const InfoBar = styled(Stack)({
-        backgroundColor: "#2b2b2b",
-        height: "65px",
-        width: "100vw",
-        paddingLeft: 20,
-        paddingRight: 20,
-        left: 0,
-        bottom: 0,
-        position: "fixed"
-    });
-
-    const Thumbnail = styled('div')({
-        height: "40px",
-        width: "40px",
-        backgroundImage: `url(${thumbnail})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-    });
-
 
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.type === "trackChange" && request.trackName !== title && request.trackInfo !== info) {
@@ -189,9 +102,9 @@ function Panel() {
     })
 
     return (
-        <ThemeProvider theme={darkTheme}>
-            <Wrapper>
-                <Backdrop/>
+        <ThemeProvider theme={Theme.darkTheme}>
+            <Wrapper >
+                <Backdrop style={{backgroundImage: `url(${thumbnail})`}}/>
                 <Overlay>
                     <CssBaseline/>
                     <CenteredDiv>
@@ -213,21 +126,16 @@ function Panel() {
                     </Box>
                     {isInfoBarVisible &&
                     <InfoBar direction={"row"} alignItems={"center"} justifyContent={"flex-start"} spacing={2}>
-                        <Thumbnail/>
+                        <Thumbnail style={{backgroundImage: `url(${thumbnail})`}}/>
                         <Stack alignItems={"stretch"} justifyContent={"center"} spacing={0}>
-                            <Typography sx={{fontSize: "14px", fontWeight: "bold"}}>
+                            <SongTitle>
                                 {title}
-                            </Typography>
-                            <Typography sx={{fontSize: "14px", fontWeight: "bold", color: "#909090"}}>
+                            </SongTitle>
+                            <SongInfo>
                                 {info}
-                            </Typography>
+                            </SongInfo>
                         </Stack>
                     </InfoBar>}
-                    {/*<RefreshLyricsButton*/}
-                    {/*    variant={"contained"}*/}
-                    {/*    onClick={fetchData}>*/}
-                    {/*    <RefreshIcon/>*/}
-                    {/*</RefreshLyricsButton>*/}
                 </Overlay>
             </Wrapper>
         </ThemeProvider>
