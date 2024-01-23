@@ -54,9 +54,19 @@ export const CenteredDiv = styled("div")({
     transform: "translate(-50%, -50%)"
 });
 
-export const Lyrics = styled(Typography)({
-    height: "100vh",
-    paddingTop: "1em",
+export const LyricsFadeTop = styled('div')({
+    WebkitMaskImage: "linear-gradient(to top, black 90%, transparent 100%), linear-gradient(to left, black 5px, transparent 6px)",
+    maskImage: "linear-gradient(to top, black 90%, transparent 100%), linear-gradient(to left, black 5px, transparent 6px)",
+});
+
+export const LyricsFadeBottom = styled('div')({
+    WebkitMaskImage: "linear-gradient(to bottom, black 90%, transparent 100%), linear-gradient(to left, black 5px, transparent 6px)",
+    maskImage: "linear-gradient(to bottom, black 90%, transparent 100%), linear-gradient(to left, black 5px, transparent 6px)",
+});
+
+export const LyricsContainer = styled(Typography)({
+    height: "95vh",
+    paddingTop: "2em",
     paddingBottom: "5em",
     paddingLeft: "1em",
     paddingRight: "1em",
