@@ -1,7 +1,21 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import {Box, ThemeProvider, Stack} from "@mui/material";
-import {Wrapper, Backdrop, Overlay, WabisabiFace, ErrorMessage, CenteredDiv, Lyrics, InfoBar, Thumbnail, SongTitle, SongInfo} from "./components.jsx";
+import {
+    Wrapper,
+    Backdrop,
+    Overlay,
+    WabisabiFace,
+    ErrorMessage,
+    CenteredDiv,
+    LyricsContainer,
+    InfoBar,
+    Thumbnail,
+    SongTitle,
+    SongInfo,
+    LyricsFadeTop,
+    LyricsFadeBottom
+} from "./components.jsx";
 import CssBaseline from "@mui/material/CssBaseline";
 import * as Theme from "./theme.jsx";
 import Kuroshiro from "kuroshiro";
@@ -120,9 +134,13 @@ function Panel() {
                         {loading && <BeatLoader loading={loading} color={"#ffffff"} size={30}/>}
                     </CenteredDiv>
                     <Box>
-                        <Lyrics variant={"h4"}>
-                            <div dangerouslySetInnerHTML={{ __html: lyrics }}/>
-                        </Lyrics>
+                        <LyricsFadeTop>
+                            <LyricsFadeBottom>
+                                <LyricsContainer variant={"h4"}>
+                                    <div dangerouslySetInnerHTML={{ __html: lyrics }}/>
+                                </LyricsContainer>
+                            </LyricsFadeBottom>
+                        </LyricsFadeTop>
                     </Box>
                     {isInfoBarVisible &&
                     <InfoBar direction={"row"} alignItems={"center"} justifyContent={"flex-start"} spacing={2}>
