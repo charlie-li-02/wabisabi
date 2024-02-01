@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
-import {Box, ThemeProvider, Stack} from "@mui/material";
+import {Box, GlobalStyles, Stack} from "@mui/material";
+import {ThemeProvider} from "@mui/material/styles";
 import {
     Wrapper,
     Backdrop,
@@ -118,6 +119,29 @@ function Panel() {
     return (
         <ThemeProvider theme={Theme.darkTheme}>
             <Wrapper >
+                <GlobalStyles styles={{scrollbarColor: "#ffffff #959595",
+                    "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
+                        width: "5px",
+                        backgroundColor: "transparent",
+                    },
+                    "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+                        borderRadius: 8,
+                        backgroundColor: "#ffffff",
+                        minHeight: 24,
+                        border: "none",
+                    },
+                    "&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus": {
+                        backgroundColor: "#6b6b6b",
+                    },
+                    "&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active": {
+                        backgroundColor: "#6b6b6b",
+                    },
+                    "&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover": {
+                        backgroundColor: "#6b6b6b",
+                    },
+                    "&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner": {
+                        backgroundColor: "#959595",
+                    }}}/>
                 <Backdrop style={{backgroundImage: `url(${thumbnail})`}}/>
                 <Overlay>
                     <CssBaseline/>
